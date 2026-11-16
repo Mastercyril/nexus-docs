@@ -1,0 +1,38 @@
+---
+title: "Face Studio"
+description: "Your own talking face: your model, Puter speech, a canvas renderer and a recordable clip."
+---
+
+Face Studio is the piece you own end to end. It is at `/nexus/face-studio` and it does not embed
+anyone else's wigdet.
+
+## Pipeline
+
+1. **Answer.** The question goes to `/api/chat` first, so your own model leads. If that is unavailable, it falls back to Puter chat.
+2. **Voice.** `puter.ai.txt2speech` renders the line. OpenAI, ElevenLabs, Gemini and neural voices are all selectable.
+3. **Motion.** The canvas draws the face each frame. Mouth height comes from the real waveform, sampled with an `AnalyserNode`, so the lips follow the audio instead of guessing.
+4. **Clip.** `canvas.captureStream()` plus the audio destination go into a `MediaRecorder`, which yields a downloadable `.webm`. One ffmpeg pass turns it into MP4.
+
+```js
+const audio = await puter.ai.txt2speech(text, {
+  provider: 'openai', model: 'gpt-4o-mini-tts', voice: 'alloy'
+});
+const src = ctx.createMediaElementSource(audio);
+src.connect(analyser);
+analyser.connect(destinationNode);
+```
+
+## Cinematic take
+
+`puter.ai.txt2vid` can supply a moving photoreal layer that the renderer composites under the
+voice. It needs video credits on the Puter account; when the balance is short the button says so
+instead of failing silently.
+
+## Substitutes, if a piece is missing
+
+| Piece | Free substitute |
+| --- | --- |
+| Photoreal lip sync | A Wav2Lip or LatentSync Space driven through its Gradio API |
+| Realtime duplex voice | `puter.ai.realtime()`, paid Puter plan |
+| Voice conversion | `puter.ai.speech2speech()` with an ElevenLabs voice id |
+| MP4 export | `ffmpeg -i clip.webm -c:v libx264 clip.mp4` |
