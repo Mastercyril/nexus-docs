@@ -1,0 +1,30 @@
+---
+title: "Nexus API"
+description: "The endpoints behind the Nexus hub."
+---
+
+Nexus is deployed on Vercel at `https://quantumnexus-josephdougherty483-7465s-projects.vercel.app`.
+
+## Chat
+
+```bash
+curl -s https://quantumnexus-josephdougherty483-7465s-projects.vercel.app/api/chat \
+  -H 'Content-Type: application/json' \
+  -d '{"message":"hello"}'
+```
+
+Your foundation model answers. If it is genuinely down, the backup chain engages in order: Modal,
+then the Cloudflare worker, then the Colab notebook, then the in-app backup.
+
+## Other routes
+
+| Route | Purpose |
+| --- | --- |
+| `/api/qai2` | QAI2 calls. `?engine=backup` forces the backup path for testing. |
+| `/api/memory` | Memory bank read and write. |
+| `/api/runner` | Long-running jobs. |
+| `/api/mcp` | MCP bridge for tool calls. |
+| `/api/supreme` | Image and video rendering. |
+
+A cold start never counts as an outage: there is a 35 second probe, two real failures and a two
+minute cooldown before a backup takes over.
