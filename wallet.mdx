@@ -1,0 +1,25 @@
+---
+title: "Wallet"
+description: "Generate an address locally, keep the key local, and register for the airdrop."
+---
+
+The wallet runs in the browser and the private key never leaves the device.
+
+## Steps
+
+1. Open the wallet page and generate a new account.
+2. Save the key somewhere offline. There is no recovery service and no reset.
+3. The address is your registration id for the airdrop.
+
+## Sending
+
+A transaction is signed locally and posted to `/api/tx`:
+
+```bash
+curl -s https://qsam-qchain.onrender.com/api/tx \
+  -H 'Content-Type: application/json' \
+  -d '{"from":"<address>","to":"<address>","amount":1000,"asset":"QSAM","nonce":0,"signature":"<sig>"}'
+```
+
+A 200 means the mempool accepted it, with `accepted: true`. A 400 carries the rejection reason.
+Read the nonce from `/api/address/{address}` before signing; reusing one is rejected.
