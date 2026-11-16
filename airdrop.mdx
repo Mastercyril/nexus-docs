@@ -1,0 +1,24 @@
+---
+title: "1,000 QSAM airdrop"
+description: "One thousand QSAM per registered wallet, sent from the chain treasury."
+---
+
+Every registered wallet receives 1,000 QSAM from the treasury as a signed transaction on our own
+chain. It is not a transfer on Solana, and it does not depend on another network's state.
+
+## Terms, in plain language
+
+- One allocation per wallet, and the treasury log is public.
+- The airdrop page lives at [13thchamberllc.com/1000-qsam-airdrop](https://13thchamberllc.com/1000-qsam-airdrop/).
+- Nothing is sold. There is no price and no payment step anywhere in the flow.
+
+## Checking an allocation
+
+Query the address and look for the treasury transaction:
+
+```bash
+curl -s https://qsam-qchain.onrender.com/api/address/<your-address>
+```
+
+`transactions` lists what the chain has recorded, and `next_nonce` tells you the next value to
+sign with.
