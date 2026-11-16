@@ -1,0 +1,50 @@
+{
+  "name": "13th Chamber",
+  "theme": "mint",
+  "colors": {
+    "primary": "#7FE9FF",
+    "light": "#B48CFF",
+    "dark": "#070A14"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": [
+    {
+      "group": "Start here",
+      "pages": [
+        "index",
+        "nexus"
+      ]
+    },
+    {
+      "group": "Face",
+      "pages": [
+        "face",
+        "face-studio"
+      ]
+    },
+    {
+      "group": "Engine",
+      "pages": [
+        "models",
+        "tools"
+      ]
+    },
+    {
+      "group": "Chain",
+      "pages": [
+        "qsam"
+      ]
+    }
+  ],
+  "navbar": {
+    "links": [
+      {
+        "label": "Nexus",
+        "href": "https://quantumnexus-josephdougherty483-7465s-projects.vercel.app/nexus"
+      }
+    ]
+  },
+  "footer": {
+    "socials": {}
+  }
+}
