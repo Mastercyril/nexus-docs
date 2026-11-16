@@ -12,7 +12,30 @@
       "group": "Start here",
       "pages": [
         "index",
-        "nexus"
+        "overview"
+      ]
+    },
+    {
+      "group": "Chain",
+      "pages": [
+        "wallet",
+        "airdrop",
+        "run-a-node"
+      ]
+    },
+    {
+      "group": "API",
+      "pages": [
+        "nexus-api",
+        "openapi"
+      ]
+    },
+    {
+      "group": "Nexus",
+      "pages": [
+        "nexus",
+        "models",
+        "tools"
       ]
     },
     {
@@ -21,26 +44,23 @@
         "face",
         "face-studio"
       ]
-    },
-    {
-      "group": "Engine",
-      "pages": [
-        "models",
-        "tools"
-      ]
-    },
-    {
-      "group": "Chain",
-      "pages": [
-        "qsam"
-      ]
     }
   ],
+  "api": {
+    "openapi": "openapi.json",
+    "playground": {
+      "display": "interactive"
+    }
+  },
   "navbar": {
     "links": [
       {
         "label": "Nexus",
         "href": "https://quantumnexus-josephdougherty483-7465s-projects.vercel.app/nexus"
+      },
+      {
+        "label": "Explorer",
+        "href": "https://mastercyril.github.io/qchain-explorer/"
       }
     ]
   },
