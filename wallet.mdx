@@ -21,5 +21,4 @@ curl -s https://qsam-qchain.onrender.com/api/tx \
   -d '{"from":"<address>","to":"<address>","amount":1000,"asset":"QSAM","nonce":0,"signature":"<sig>"}'
 ```
 
-A 200 means the mempool accepted it, with `accepted: true`. A 400 carries the rejection reason.
-Read the nonce from `/api/address/{address}` before signing; reusing one is rejected.
+A 200 means the mempool accepted it, with `accepted: true`. A 400 carries the rejection reason. Read the nonce from `/api/address/{address}` before signing; reusing one is rejected.

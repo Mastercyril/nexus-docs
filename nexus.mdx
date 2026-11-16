@@ -3,8 +3,7 @@ title: "Nexus"
 description: "The AI hub: QAI2 leads, Deep mode and abilities are called when needed."
 ---
 
-Nexus lives at `/nexus`. Your foundation model answers by default; the ability buttons pin a job
-to the engine that can actually do it.
+Nexus lives at `/nexus`. Your foundation model answers by default; the ability buttons pin a job to the engine that can actually do it.
 
 ## Composer controls
 
@@ -20,13 +19,13 @@ to the engine that can actually do it.
 ## Endpoint
 
 <CodeGroup>
+
 ```bash cURL
 curl -s https://quantumnexus-josephdougherty483-7465s-projects.vercel.app/api/chat \
   -H 'Content-Type: application/json' \
   -d '{"message":"hello"}'
 ```
+
 </CodeGroup>
 
-Backups engage only when QAI2 is genuinely down, never during warm-up. Order: Modal, then the
-Cloudflare worker, then the Colab notebook, then the in-app backup. A cold start is not an outage:
-there is a 35 second probe, two real failures and a two minute cooldown.
+Backups engage only when QAI2 is genuinely down, never during warm-up. Order: Modal, then the Cloudflare worker, then the Colab notebook, then the in-app backup. A cold start is not an outage: there is a 35 second probe, two real failures and a two minute cooldown.

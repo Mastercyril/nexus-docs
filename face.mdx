@@ -3,24 +3,19 @@ title: "Face mode"
 description: "The video PAL appears inside the Nexus screen and speaks, with no Tavus branding."
 ---
 
-Press **◈ FACE** beside the mic in either composer. A 16:9 stage opens over the chat with the
-video PAL already running. Close it with ✕ or Escape; nothing navigates away.
+Press **◈ FACE** beside the mic in either composer. A 16:9 stage opens over the chat with the video PAL already running. Close it with ✕ or Escape; nothing navigates away.
 
 ## What runs underneath
 
-The palette is a Tavus deployment mounted as a web component. The deployment is public, so no key
-ever reaches the browser.
+The palette is a Tavus deployment mounted as a web component. The deployment is public, so no key ever reaches the browser.
 
 ```html
 <tavus-embed deployment-id="de209a8d-edd3-4e63-ae29-bcc253309597"></tavus-embed>
 ```
 
-The "hide Tavus badge" flag is set on the deployment itself, so the emblem is absent at the source
-rather than hidden with CSS. `face-mode.js` adds a second pass that strips any badge chrome the
-widget renders in an open shadow root.
+The "hide Tavus badge" flag is set on the deployment itself, so the emblem is absent at the source rather than hidden with CSS. `face-mode.js` adds a second pass that strips any badge chrome the widget renders in an open shadow root.
 
 ## Settings worth knowing
 
-- **Captcha and haircheck** are on for the deployment. Turning both off removes the two clicks
-  before every session and is a single API call.
+- **Captcha and haircheck** are on for the deployment. Turning both off removes the two clicks before every session and is a single API call.
 - **Modality** is `video`, with closed captions and picture-in-picture enabled.

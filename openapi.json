@@ -6,28 +6,17 @@
     "description": "Public read API for the 13th Chamber qchain node, plus the transaction submit endpoint. The node runs on a free tier and sleeps when idle, so the first request after a quiet spell can take up to a minute to answer. That is a cold start, not an outage."
   },
   "servers": [
-    {
-      "url": "https://qsam-qchain.onrender.com",
-      "description": "Public node (Render free tier)"
-    }
+    { "url": "https://qsam-qchain.onrender.com", "description": "Public node (Render free tier)" }
   ],
   "tags": [
-    {
-      "name": "chain"
-    },
-    {
-      "name": "accounts"
-    },
-    {
-      "name": "transactions"
-    }
+    { "name": "chain" },
+    { "name": "accounts" },
+    { "name": "transactions" }
   ],
   "paths": {
     "/api/status": {
       "get": {
-        "tags": [
-          "chain"
-        ],
+        "tags": ["chain"],
         "operationId": "getStatus",
         "summary": "Chain summary",
         "description": "Height, block and transaction counts, supply per asset, holder counts and peer statistics.",
@@ -40,42 +29,22 @@
                   "type": "object",
                   "additionalProperties": true,
                   "properties": {
-                    "height": {
-                      "type": "integer"
-                    },
-                    "blocks": {
-                      "type": "integer"
-                    },
-                    "transactions": {
-                      "type": "integer"
-                    },
+                    "height": { "type": "integer" },
+                    "blocks": { "type": "integer" },
+                    "transactions": { "type": "integer" },
                     "assets": {
                       "type": "array",
                       "items": {
                         "type": "object",
                         "additionalProperties": true,
                         "properties": {
-                          "asset": {
-                            "type": "string"
-                          },
-                          "symbol": {
-                            "type": "string"
-                          },
-                          "full_name": {
-                            "type": "string"
-                          },
-                          "supply": {
-                            "type": "string"
-                          },
-                          "decimals": {
-                            "type": "integer"
-                          },
-                          "transferable": {
-                            "type": "boolean"
-                          },
-                          "holders": {
-                            "type": "integer"
-                          }
+                          "asset": { "type": "string" },
+                          "symbol": { "type": "string" },
+                          "full_name": { "type": "string" },
+                          "supply": { "type": "string" },
+                          "decimals": { "type": "integer" },
+                          "transferable": { "type": "boolean" },
+                          "holders": { "type": "integer" }
                         }
                       }
                     },
@@ -83,15 +52,8 @@
                       "type": "object",
                       "additionalProperties": true,
                       "properties": {
-                        "peers": {
-                          "type": "array",
-                          "items": {
-                            "type": "string"
-                          }
-                        },
-                        "peer_count": {
-                          "type": "integer"
-                        }
+                        "peers": { "type": "array", "items": { "type": "string" } },
+                        "peer_count": { "type": "integer" }
                       }
                     }
                   }
@@ -104,9 +66,7 @@
     },
     "/api/verify": {
       "get": {
-        "tags": [
-          "chain"
-        ],
+        "tags": ["chain"],
         "operationId": "verifyChain",
         "summary": "Verify the chain",
         "description": "Re-walks every block and returns the validity verdict with any errors found. Use this rather than trusting a height alone.",
@@ -119,18 +79,9 @@
                   "type": "object",
                   "additionalProperties": true,
                   "properties": {
-                    "valid": {
-                      "type": "boolean"
-                    },
-                    "errors": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
-                    "height": {
-                      "type": "integer"
-                    }
+                    "valid": { "type": "boolean" },
+                    "errors": { "type": "array", "items": { "type": "string" } },
+                    "height": { "type": "integer" }
                   }
                 }
               }
@@ -141,9 +92,7 @@
     },
     "/api/blocks": {
       "get": {
-        "tags": [
-          "chain"
-        ],
+        "tags": ["chain"],
         "operationId": "listBlocks",
         "summary": "List blocks",
         "description": "Block headers in chain order. Useful for paginating an explorer view.",
@@ -154,10 +103,7 @@
               "application/json": {
                 "schema": {
                   "type": "array",
-                  "items": {
-                    "type": "object",
-                    "additionalProperties": true
-                  }
+                  "items": { "type": "object", "additionalProperties": true }
                 }
               }
             }
@@ -167,9 +113,7 @@
     },
     "/api/block/{ref}": {
       "get": {
-        "tags": [
-          "chain"
-        ],
+        "tags": ["chain"],
         "operationId": "getBlock",
         "summary": "Get one block",
         "parameters": [
@@ -178,9 +122,7 @@
             "in": "path",
             "required": true,
             "description": "Block index or block hash.",
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
         "responses": {
@@ -188,24 +130,17 @@
             "description": "Block",
             "content": {
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true
-                }
+                "schema": { "type": "object", "additionalProperties": true }
               }
             }
           },
-          "404": {
-            "description": "No such block"
-          }
+          "404": { "description": "No such block" }
         }
       }
     },
     "/api/mempool": {
       "get": {
-        "tags": [
-          "transactions"
-        ],
+        "tags": ["transactions"],
         "operationId": "getMempool",
         "summary": "Pending transactions",
         "description": "Transactions accepted but not yet mined.",
@@ -214,10 +149,7 @@
             "description": "Mempool contents",
             "content": {
               "application/json": {
-                "schema": {
-                  "type": "object",
-                  "additionalProperties": true
-                }
+                "schema": { "type": "object", "additionalProperties": true }
               }
             }
           }
@@ -226,9 +158,7 @@
     },
     "/api/address/{address}": {
       "get": {
-        "tags": [
-          "accounts"
-        ],
+        "tags": ["accounts"],
         "operationId": "getAddress",
         "summary": "Address balances and history",
         "description": "Balances per asset, the next nonce to use when signing, and the transaction history for the address.",
@@ -237,9 +167,7 @@
             "name": "address",
             "in": "path",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
+            "schema": { "type": "string" }
           }
         ],
         "responses": {
@@ -251,35 +179,24 @@
                   "type": "object",
                   "additionalProperties": true,
                   "properties": {
-                    "address": {
-                      "type": "string"
-                    },
-                    "next_nonce": {
-                      "type": "integer"
-                    },
+                    "address": { "type": "string" },
+                    "next_nonce": { "type": "integer" },
                     "transactions": {
                       "type": "array",
-                      "items": {
-                        "type": "object",
-                        "additionalProperties": true
-                      }
+                      "items": { "type": "object", "additionalProperties": true }
                     }
                   }
                 }
               }
             }
           },
-          "404": {
-            "description": "Address not found"
-          }
+          "404": { "description": "Address not found" }
         }
       }
     },
     "/api/tx": {
       "post": {
-        "tags": [
-          "transactions"
-        ],
+        "tags": ["transactions"],
         "operationId": "submitTx",
         "summary": "Submit a signed transaction",
         "description": "The only public write path. Returns 200 with accepted true, or 400 with the rejection reason. Transactions are signed locally with the post-quantum key, so the node never sees a private key.",
@@ -290,36 +207,15 @@
               "schema": {
                 "type": "object",
                 "additionalProperties": true,
-                "required": [
-                  "from",
-                  "to",
-                  "amount",
-                  "nonce",
-                  "signature"
-                ],
+                "required": ["from", "to", "amount", "nonce", "signature"],
                 "properties": {
-                  "from": {
-                    "type": "string"
-                  },
-                  "to": {
-                    "type": "string"
-                  },
-                  "amount": {
-                    "type": "number"
-                  },
-                  "asset": {
-                    "type": "string",
-                    "default": "QSAM"
-                  },
-                  "fee": {
-                    "type": "number"
-                  },
-                  "nonce": {
-                    "type": "integer"
-                  },
-                  "signature": {
-                    "type": "string"
-                  }
+                  "from": { "type": "string" },
+                  "to": { "type": "string" },
+                  "amount": { "type": "number" },
+                  "asset": { "type": "string", "default": "QSAM" },
+                  "fee": { "type": "number" },
+                  "nonce": { "type": "integer" },
+                  "signature": { "type": "string" }
                 }
               }
             }
@@ -333,12 +229,8 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "accepted": {
-                      "type": "boolean"
-                    },
-                    "detail": {
-                      "type": "string"
-                    }
+                    "accepted": { "type": "boolean" },
+                    "detail": { "type": "string" }
                   }
                 }
               }
@@ -351,12 +243,8 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "accepted": {
-                      "type": "boolean"
-                    },
-                    "detail": {
-                      "type": "string"
-                    }
+                    "accepted": { "type": "boolean" },
+                    "detail": { "type": "string" }
                   }
                 }
               }

@@ -7,44 +7,48 @@
     "dark": "#070A14"
   },
   "favicon": "/favicon.svg",
-  "navigation": [
-    {
-      "group": "Start here",
-      "pages": [
-        "index",
-        "overview"
-      ]
-    },
-    {
-      "group": "Chain",
-      "pages": [
-        "wallet",
-        "airdrop",
-        "run-a-node"
-      ]
-    },
-    {
-      "group": "API",
-      "pages": [
-        "nexus-api"
-      ]
-    },
-    {
-      "group": "Nexus",
-      "pages": [
-        "nexus",
-        "models",
-        "tools"
-      ]
-    },
-    {
-      "group": "Face",
-      "pages": [
-        "face",
-        "face-studio"
-      ]
-    }
-  ],
+  "navigation": {
+    "groups": [
+      {
+        "group": "Start here",
+        "pages": [
+          "index",
+          "overview"
+        ]
+      },
+      {
+        "group": "Chain",
+        "pages": [
+          "wallet",
+          "airdrop",
+          "run-a-node",
+          "qsam"
+        ]
+      },
+      {
+        "group": "API",
+        "openapi": "openapi.json",
+        "pages": [
+          "nexus-api"
+        ]
+      },
+      {
+        "group": "Nexus",
+        "pages": [
+          "nexus",
+          "models",
+          "tools"
+        ]
+      },
+      {
+        "group": "Face",
+        "pages": [
+          "face",
+          "face-studio"
+        ]
+      }
+    ]
+  },
   "api": {
     "openapi": "openapi.json",
     "playground": {
