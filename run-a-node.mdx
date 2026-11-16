@@ -1,0 +1,26 @@
+---
+title: "Run a node"
+description: "Bring up a second node, verify its chain, and peer it with the public one."
+---
+
+The node repository is `Mastercyril/qchain-node`. It ships a Dockerfile, a `render.yaml` and a
+`fly.toml`, so the same image runs on Render, Fly or any box with Docker.
+
+## Bring one up
+
+```bash
+git clone https://github.com/Mastercyril/qchain-node
+cd qchain-node
+docker build -t qchain-node .
+docker run -p 8080:8080 qchain-node
+```
+
+## Peer it
+
+Peering endpoints are admin-authenticated and are not part of the public API. Point the new node
+at the public one over `/p2p/connect`, then check `/p2p/stats` for the peer count and sync state.
+
+## Verify before trusting
+
+Never take a height on faith. `GET /api/verify` re-walks the chain and returns `valid` plus any
+errors. The Kotlin verifier in `kotlin/VerifyChain.kt` is the independent second opinion.
